@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - TALE Pair Finder</title>
+    <style>
+        :root {
+            --primary-color: #4DA3FF;
+            --secondary-color: #6BB3FF;
+            --accent-color: #3385E6;
+            --bg-color: #1A1A1A;
+            --card-bg: #2D2D2D;
+            --text-color: #E5E5E5;
+            --text-muted: #A0A0A0;
+            --border-color: #404040;
+            --hover-bg: #333333;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', 'Courier', monospace;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .header {
+            background: var(--card-bg);
+            color: var(--text-color);
+            padding: 1.5rem 1rem;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        h2 {
+            color: var(--text-color);
+            margin: 2rem 0 1rem 0;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--primary-color);
+            margin: 1.5rem 0 0.75rem 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background: var(--hover-bg);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', 'Courier', monospace;
+            font-size: 0.9em;
+            border: 1px solid var(--border-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            border: 1px solid var(--primary-color);
+            transition: all 0.2s ease;
+            font-family: 'Courier New', 'Courier', monospace;
+        }
+
+        .btn:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-link {
+            text-align: center;
+            margin: 2.5rem 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-box {
+            background: var(--hover-bg);
+            padding: 1.25rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--primary-color);
+            transition: all 0.2s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-box strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.3rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>🧬 About TALE Pair Finder</h1>
+            <p>Modern bioinformatics tool for TALE/TALEN pair discovery</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>What are TALEs?</h2>
+            <p>
+                <strong>TALE (Transcription Activator-Like Effector)</strong> proteins are DNA-binding proteins
+                originally found in plant pathogenic bacteria. When paired they
+                can be engineered to target and cut specific DNA sequences, making them powerful tools for genome editing.
+            </p>
+
+            <h2>What This Tool Does</h2>
+            <p>
+                The TALE Pair Finder identifies suitable pairs of TALE binding sites in your DNA sequence that can
+                be used for TALE/TALEN design. The tool searches for complementary binding sites on opposite DNA
+                strands with appropriate spacing and validates them against several quality criteria.
+            </p>
+
+            <h3>Search Criteria</h3>
+            <ul>
+                <li><strong>TALE Length:</strong> Typically 15-20 base pairs (configurable 10-30 bp)</li>
+                <li><strong>Spacer Length:</strong> Distance between binding sites (typically 12-30 bp)</li>
+                <li><strong>Start Base:</strong> TALEs Must begin with 'T' on the ?sense? strand</li>
+                <li><strong>GC Content:</strong> At least 25% for optimal binding specificity</li>
+                <li><strong>CpG Islands:</strong> Avoided due to potential methylation</li>
+                <li><strong>Consecutive A/T:</strong> Avoids 7+ consecutive A or T bases</li>
+                <li><strong>Strong RVDs:</strong> Requires at least 3 strong binding pairs (NN, HD)</li>
+            </ul>
+
+            <h2>RVD Encoding</h2>
+            <p>
+                RVDs (Repeat Variable Diresidues) are the amino acid pairs that determine TALE DNA binding specificity:
+            </p>
+            <ul>
+                <li><strong>NI</strong> binds to <strong>Adenine (A)</strong></li>
+                <li><strong>HD</strong> binds to <strong>Cytosine (C)</strong></li>
+                <li><strong>NN or NH</strong> bind to <strong>Guanine (G)</strong></li>
+                <li><strong>NG</strong> binds to <strong>Thymine (T)</strong></li>
+            </ul>
+
+            <h2>How to Use</h2>
+            <ol>
+                <li><strong>Enter your DNA sequence</strong> (100 to 100,000 base pairs)</li>
+                <li><strong>Adjust parameters</strong> as needed (or use defaults)</li>
+                <li><strong>Click "Find TALE Pairs"</strong> to start the search</li>
+                <li><strong>Monitor progress</strong> in real-time</li>
+                <li><strong>View results</strong> with interactive filtering and sorting</li>
+                <li><strong>Export data</strong> as CSV or TSV for further analysis</li>
+            </ol>
+
+            <h2>Technical Details</h2>
+            <h3>Performance Optimizations</h3>
+            <ul>
+                <li>Pre-computation of CpG islands (eliminates millions of redundant checks)</li>
+                <li>O(1) GC content queries using cumulative sum arrays</li>
+                <li>Efficient sliding window approach</li>
+                <li>Early filter termination to skip invalid candidates quickly</li>
+                <li>Bulk database inserts for fast result storage</li>
+            </ul>
+
+            <h3>Technology Stack</h3>
+            <ul>
+                <li><strong>Backend:</strong> FastAPI (Python 3.10+)</li>
+                <li><strong>Database:</strong> PostgreSQL with asyncio support</li>
+                <li><strong>Frontend:</strong> Vanilla JavaScript with DataTables</li>
+                <li><strong>Deployment:</strong> Docker & Docker Compose</li>
+            </ul>
+
+            <h2>Data Retention</h2>
+            <p>
+                Search results are stored for <strong>7 days</strong> and then automatically deleted.
+                Each search session gets a unique ID that you can use to access results later.
+            </p>
+
+            <h2>Limits</h2>
+            <ul>
+                <li>Maximum sequence length: 100,000 base pairs</li>
+                <li>Background processing may take several minutes for large sequences</li>
+            </ul>
+
+            <h2>Support & Feedback</h2>
+            <p>
+                This software is in active development. If you encounter issues or have suggestions,
+                please report them.
+            </p>
+        </div>
+
+        <div class="back-link">
+            <a href="/" class="btn">Back to Search</a>
+        </div>
+    </div>
+</body>
+</html>
+
