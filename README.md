@@ -1,4 +1,4 @@
-# 🧬 TALE Pair Finder v2.0
+# 🧬 TALE Pair Finder v2.0 (beta)
 
 ## Overview
 
@@ -117,6 +117,7 @@ Developed by Alex Todd for bioinformatics research and genome engineering applic
 ![Version](https://img.shields.io/badge/version-2.0.0-blue)
 ![Python](https://img.shields.io/badge/python-3.10+-green)
 ![License](https://img.shields.io/badge/license-MIT-orange)
+
 
 
 
