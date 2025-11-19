@@ -29,7 +29,7 @@ The search algorithm employs several optimisations for efficient genome-scale an
 - Configurable TALE lengths (10-30 bp) and spacer distances (1-100 bp)
 - Position-specific searching for targeted regions
 - Export functionality (CSV/TSV formats)
-- Genomic viewer
+- Genomic viewer (Currently quite buggy)
 
 ### Current Limitations 
 
@@ -38,7 +38,7 @@ The search algorithm employs several optimisations for efficient genome-scale an
 - Incorrect positioning of elements when switching between view modes
 - Missing colour-coding options for TALE properties (length, GC content, RVD composition)
 
-### Planned Enhancements
+### Planned Enhancements (Future updates)
 
 **Direct sequence-to-plasmid functionality**
 
@@ -116,6 +116,7 @@ Developed by Alex Todd for bioinfo research and gene engineering.
 ![Version](https://img.shields.io/badge/version-2.0.0-blue)
 ![Python](https://img.shields.io/badge/python-3.10+-green)
 ![License](https://img.shields.io/badge/license-MIT-orange)
+
 
 
 
