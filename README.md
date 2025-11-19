@@ -1,4 +1,4 @@
-# 🧬 TALE Pair Finder v2.0 (beta)
+# 🧬 TALE Pair Finder v0.2.0 (beta)
 
 ## Overview
 
@@ -31,7 +31,7 @@ The search algorithm employs several optimisations for efficient genome-scale an
 - Export functionality (CSV/TSV formats)
 - Genomic viewer
 
-### Current Limitations (V2.0)
+### Current Limitations 
 
 **Visualisation Issues:**
 - Current bugs include rendering inconsistencies at different zoom levels
@@ -96,7 +96,6 @@ The tool applies multiple quality filters to potential TALEs:
 
 - [DEPLOYMENT.md](DEPLOYMENT.md) - Complete deployment guide with technical details, configuration, API endpoints, security, monitoring, and troubleshooting
 - [/about](http://localhost:8000/about) - Application documentation
-- [/docs](http://localhost:8000/docs) - Interactive API docs
 
 ## Good References for TALE targeting
 
@@ -112,11 +111,12 @@ Copyright (c) 2025 Alex Todd
 
 ---
 
-Developed by Alex Todd for bioinformatics research and genome engineering applications.
+Developed by Alex Todd for bioinfo research and gene engineering.
 
 ![Version](https://img.shields.io/badge/version-2.0.0-blue)
 ![Python](https://img.shields.io/badge/python-3.10+-green)
 ![License](https://img.shields.io/badge/license-MIT-orange)
+
 
 
 
