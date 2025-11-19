@@ -191,7 +191,7 @@
     <div class="header">
         <div class="header-content">
             <h1>🧬 About TALE Pair Finder</h1>
-            <p>Modern bioinformatics tool for TALE/TALEN pair discovery</p>
+            <p>Bioinformatics tool for TALE pair discovery</p>
         </div>
     </div>
 
@@ -207,7 +207,7 @@
             <h2>What This Tool Does</h2>
             <p>
                 The TALE Pair Finder identifies suitable pairs of TALE binding sites in your DNA sequence that can
-                be used for TALE/TALEN design. The tool searches for complementary binding sites on opposite DNA
+                be used for TALE design. The tool searches for complementary binding sites on opposite DNA
                 strands with appropriate spacing and validates them against several quality criteria.
             </p>
 
@@ -215,7 +215,7 @@
             <ul>
                 <li><strong>TALE Length:</strong> Typically 15-20 base pairs (configurable 10-30 bp)</li>
                 <li><strong>Spacer Length:</strong> Distance between binding sites (typically 12-30 bp)</li>
-                <li><strong>Start Base:</strong> TALEs Must begin with 'T' on the ?sense? strand</li>
+                <li><strong>Start Base:</strong> TALEs Position 0 must be T</li>
                 <li><strong>GC Content:</strong> At least 25% for optimal binding specificity</li>
                 <li><strong>CpG Islands:</strong> Avoided due to potential methylation</li>
                 <li><strong>Consecutive A/T:</strong> Avoids 7+ consecutive A or T bases</li>
@@ -243,40 +243,21 @@
                 <li><strong>Export data</strong> as CSV or TSV for further analysis</li>
             </ol>
 
-            <h2>Technical Details</h2>
-            <h3>Performance Optimizations</h3>
-            <ul>
-                <li>Pre-computation of CpG islands (eliminates millions of redundant checks)</li>
-                <li>O(1) GC content queries using cumulative sum arrays</li>
-                <li>Efficient sliding window approach</li>
-                <li>Early filter termination to skip invalid candidates quickly</li>
-                <li>Bulk database inserts for fast result storage</li>
-            </ul>
-
-            <h3>Technology Stack</h3>
-            <ul>
-                <li><strong>Backend:</strong> FastAPI (Python 3.10+)</li>
-                <li><strong>Database:</strong> PostgreSQL with asyncio support</li>
-                <li><strong>Frontend:</strong> Vanilla JavaScript with DataTables</li>
-                <li><strong>Deployment:</strong> Docker & Docker Compose</li>
-            </ul>
-
             <h2>Data Retention</h2>
             <p>
-                Search results are stored for <strong>7 days</strong> and then automatically deleted.
-                Each search session gets a unique ID that you can use to access results later.
+                Search results are stored for 7 days and then automatically deleted.
+                No userdata is stored.
             </p>
 
             <h2>Limits</h2>
             <ul>
                 <li>Maximum sequence length: 100,000 base pairs</li>
-                <li>Background processing may take several minutes for large sequences</li>
+                <li>Background processing may take some time for large sequences or varied tale search</li>
             </ul>
 
             <h2>Support & Feedback</h2>
             <p>
-                This software is in active development. If you encounter issues or have suggestions,
-                please report them.
+                This software is in active development and has bugs, please check all outputs before planning an experiment using tool outputs.
             </p>
         </div>
 
@@ -286,4 +267,5 @@
     </div>
 </body>
 </html>
+
 
