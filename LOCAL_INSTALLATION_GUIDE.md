@@ -18,17 +18,16 @@
 
 ## Prerequisites
 
-### Hardware Requirements (Minicomputer)
-- **RAM:** Minimum 2GB, recommended 4GB+
-- **Storage:** At least 5GB free space
-- **CPU:** Any modern ARM/x86 processor (Raspberry Pi 4, Intel NUC, etc.)
-- **Network:** Ethernet connection recommended for stability
+### Hardware Requirements 
+- **RAM:** Recommended 8GB+
+- **Storage:** At least 100GB free space
+- **CPU:** Any. Faster CPU will provide faster results
 
 ### Software Requirements
-- **Operating System:** Linux (Debian, Ubuntu, Raspberry Pi OS)
+- **Operating System:** Linux 
 - **Docker:** Version 20.10+
 - **Docker Compose:** Version 2.0+
-- **Internet Connection:** For domain access and Cloudflare
+- **Internet Connection:** For website hosting
 
 ### Install Docker and Docker Compose
 
@@ -282,58 +281,15 @@ curl -I http://localhost:8000/
 1. Log in to Cloudflare Dashboard
 2. Click **"Domain Registration"** in the left sidebar
 3. Click **"Register Domains"**
-4. Search for available domains (e.g., `mytaletools.com`, `mygenomics.net`)
-5. Add domain to cart and proceed to checkout
-6. Complete payment (prices typically $8-15/year for common TLDs)
-
-**Advantages:**
-- Domain automatically uses Cloudflare nameservers
-- DNS settings immediately available
-- Simplest setup process
-
-### Option 2: Transfer Existing Domain to Cloudflare
-
-If you already own a domain elsewhere (GoDaddy, Namecheap, etc.):
-
-1. In Cloudflare Dashboard, click **"Domain Registration"**
-2. Click **"Transfer Domains"**
-3. Enter your domain name
-4. Unlock domain at your current registrar
-5. Get authorization code from current registrar
-6. Complete transfer process (takes 5-7 days)
-
-### Option 3: Use Existing Domain with Cloudflare DNS (Keep Current Registrar)
-
-1. In Cloudflare Dashboard, click **"Websites"**
-2. Click **"Add a Site"**
-3. Enter your domain name and click **"Add Site"**
-4. Select **Free Plan** and click **"Continue"**
-5. Cloudflare will scan your existing DNS records
-6. Review records and click **"Continue"**
-7. Cloudflare will provide you with **2 nameservers** (e.g., `dana.ns.cloudflare.com`, `todd.ns.cloudflare.com`)
-8. Go to your domain registrar (GoDaddy, Namecheap, etc.)
-9. Find **Nameserver settings** or **DNS settings**
-10. Replace existing nameservers with Cloudflare's nameservers
-11. Wait 24-48 hours for propagation
-12. Cloudflare will email you when domain is active
-
-**For the rest of this guide, we'll assume you have a domain set up on Cloudflare.**
-**Example domain:** `mytaletools.com`
+4. Search for available domains 
+5. Add domain to cart and purchase 
 
 ---
 
 ## Setting Up Cloudflare Tunnel (Recommended)
 
-Cloudflare Tunnel provides secure access without opening ports on your router or requiring a public IP address. This is the **best option for home minicomputers**.
+Cloudflare Tunnel provides secure access without opening ports on your router or requiring a public IP address. This is the best option for quick setup.
 
-### Why Cloudflare Tunnel?
-- ✓ No port forwarding needed
-- ✓ No public IP address required
-- ✓ Encrypted connection to Cloudflare
-- ✓ DDoS protection included
-- ✓ Works behind NAT/firewall
-- ✓ Free for personal use
-- ✓ Automatic HTTPS
 
 ### Step 1: Install Cloudflare Tunnel (cloudflared)
 
@@ -482,8 +438,6 @@ curl -I https://mytaletools.com
 **Cloudflare automatically provides:**
 - HTTPS/SSL certificate (automatic)
 - HTTP to HTTPS redirect
-- DDoS protection
-- CDN caching for static assets
 
 ---
 
@@ -870,6 +824,7 @@ sudo systemctl restart cloudflared
 
 ---
 
-**Version:** 1.0
-**Last Updated:** 2025-11-12
-**Application Version:** 2.0.0
+**Version:** 1.0.1
+**Last Updated:** 2025-11-19
+**Application Version:** beta 0.2.0
+
