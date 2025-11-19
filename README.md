@@ -44,19 +44,18 @@ The search algorithm employs several optimisations for efficient genome-scale an
 
 Direct sequence-to-plasmid functionality is not yet implemented. Hopefully V3+ will enable clicking on identified TALE pairs to automatically generate annotated plasmid sequences with appropriate promoters, coding sequences, and assembly sites.
 
-**Immediate Development**
+**Planned Development**
 
-- Multiple TALE architectures: TALEN nucleases (FokI fusions), transcriptional activators (VP64/VP160), repressors (KRAB/SID), and suppressor TALEs
-- Direct plasmid generation with Golden Gate assembly sites (BsaI/Esp3I compatible)
+- Multiple TALE architectures (Once I read the literature on this): TALEN nucleases (FokI fusions), transcriptional activators (VP64/VP160), repressors (KRAB/SID), and suppressor TALEs
+- Direct plasmid generation with Golden Gate assembly sites
 - Integration with genome browsers for contextual analysis
 
-**Algorithm Improvements**
+**Planned Algorithm Improvements**
 
 - Enhanced RVD Options: Addition of NS (degenerate binding), NK (improved G specificity), and position-specific RVD preferences
-- Refined Constraints: Position 2 A-avoidance, terminal NG preference (85% in natural TALEs), base composition scoring (31±16% A, 37±13% C, 9±8% G, 22±10% T)
-- C-terminal Variants: Support for +28 and +63 architectures with spacer-specific recommendations (12-13 bp for +28/+28, 12-21 bp for +63/+63)
+- Refined Constraints: Position 2 A-avoidance, terminal NG preference (85% in natural TALEs), base composition scoring
 - Activity Prediction: Machine learning model incorporating RVD composition, spacer optimization, and terminal preferences
-- Assembly Validation: Homology checking to prevent recombination, array diversity requirements, synthesis complexity scoring
+- Assembly Validation: Homology checking, create a synthesis complexity score
 
 **Advanced Features**
 
@@ -116,6 +115,7 @@ Developed by Alex Todd for bioinfo research and gene engineering.
 ![Version](https://img.shields.io/badge/version-2.0.0-blue)
 ![Python](https://img.shields.io/badge/python-3.10+-green)
 ![License](https://img.shields.io/badge/license-MIT-orange)
+
 
 
 
