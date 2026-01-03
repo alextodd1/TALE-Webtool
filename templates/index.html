@@ -121,12 +121,14 @@
             </p>
 
             <p>
-                <input type="checkbox" name="skip_cpg" id="skip_cpg" checked>
+                <input type="hidden" name="skip_cpg" value="false">
+                <input type="checkbox" name="skip_cpg" id="skip_cpg" value="true" checked>
                 <label for="skip_cpg">Skip CpG islands</label>
             </p>
 
             <p>
-                <input type="checkbox" name="skip_consecutive_at" id="skip_consecutive_at" checked>
+                <input type="hidden" name="skip_consecutive_at" value="false">
+                <input type="checkbox" name="skip_consecutive_at" id="skip_consecutive_at" value="true" checked>
                 <label for="skip_consecutive_at">Skip sequences with 7+ consecutive A/T</label>
             </p>
 

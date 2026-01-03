@@ -94,6 +94,11 @@ async def help_page(request: Request):
     return templates.TemplateResponse("about.html", {"request": request})
 
 
+def _parse_checkbox(value: str) -> bool:
+    """Parse checkbox form value to boolean."""
+    return value.lower() in ("true", "on", "1", "yes")
+
+
 @app.post("/search")
 async def perform_search(
     request: Request,
@@ -112,14 +117,27 @@ async def perform_search(
     g_code: str = Form("NH"),
     position: Optional[int] = Form(None),
     position_range: Optional[int] = Form(None),
-    skip_cpg: bool = Form(True),
-    skip_consecutive_at: bool = Form(True),
+    skip_cpg: str = Form("true"),
+    skip_consecutive_at: str = Form("true"),
     min_gc: int = Form(25),
 ):
     """
     Handle search form submission.
     Supports paste, file upload, and NCBI fetch.
     """
+    # Parse checkbox values
+    skip_cpg_bool = _parse_checkbox(skip_cpg)
+    skip_consecutive_at_bool = _parse_checkbox(skip_consecutive_at)
+
+    # Log search parameters for debugging
+    logger.info(
+        f"Search parameters: mode={search_mode}, orientation={orientation}, "
+        f"tale_length={min_tale_length}-{max_tale_length}, "
+        f"spacer_length={min_spacer_length}-{max_spacer_length}, "
+        f"g_code={g_code}, skip_cpg={skip_cpg_bool}, "
+        f"skip_consecutive_at={skip_consecutive_at_bool}, min_gc={min_gc}"
+    )
+
     sequence = None
     sequence_name = None
     error = None
@@ -160,8 +178,8 @@ async def perform_search(
             min_spacer_length=min_spacer_length,
             max_spacer_length=max_spacer_length,
             g_code=g_code,
-            skip_cpg=skip_cpg,
-            skip_consecutive_at=skip_consecutive_at,
+            skip_cpg=skip_cpg_bool,
+            skip_consecutive_at=skip_consecutive_at_bool,
             min_gc=min_gc,
         )
 
@@ -213,8 +231,8 @@ async def perform_search(
                 max_tale_length=max_tale_length,
                 g_code=g_code,
                 orientation=single_orientation,
-                skip_cpg=skip_cpg,
-                skip_consecutive_at=skip_consecutive_at,
+                skip_cpg=skip_cpg_bool,
+                skip_consecutive_at=skip_consecutive_at_bool,
                 min_gc=min_gc,
                 position=position,
                 position_range=position_range,
@@ -244,8 +262,8 @@ async def perform_search(
                 max_spacer_length=max_spacer_length,
                 g_code=g_code,
                 orientation=orientation,
-                skip_cpg=skip_cpg,
-                skip_consecutive_at=skip_consecutive_at,
+                skip_cpg=skip_cpg_bool,
+                skip_consecutive_at=skip_consecutive_at_bool,
                 min_gc=min_gc,
                 position=position,
                 position_range=position_range,
