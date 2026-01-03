@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TALE Finder - Plasmid Design</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+</head>
+<body>
+    <h1>TALE Plasmid Design</h1>
+    <p><a href="/results/{{ session_id }}">Back to Results</a> | <a href="/">New Search</a></p>
+    <hr>
+
+    <h2>Selected TALE</h2>
+    <table border="1" cellpadding="5">
+        {% if tale_type == 'pair' %}
+        <tr><th>Left TALE Position</th><td>{{ tale.left_start }}-{{ tale.left_end }} ({{ tale.left_strand }})</td></tr>
+        <tr><th>Left TALE RVD</th><td><code>{{ tale.left_rvd }}</code></td></tr>
+        <tr><th>Spacer</th><td>{{ tale.spacer_length }} bp</td></tr>
+        <tr><th>Right TALE Position</th><td>{{ tale.right_start }}-{{ tale.right_end }} ({{ tale.right_strand }})</td></tr>
+        <tr><th>Right TALE RVD</th><td><code>{{ tale.right_rvd }}</code></td></tr>
+        {% else %}
+        <tr><th>Position</th><td>{{ tale.start }}-{{ tale.end }}</td></tr>
+        <tr><th>Strand</th><td>{{ tale.strand }}</td></tr>
+        <tr><th>RVD Sequence</th><td><code>{{ tale.rvd }}</code></td></tr>
+        <tr><th>DNA Target</th><td><code>{{ tale.dna }}</code></td></tr>
+        {% endif %}
+    </table>
+
+    <h2>Design Options</h2>
+    <form action="/generate" method="POST">
+        <input type="hidden" name="session_id" value="{{ session_id }}">
+        <input type="hidden" name="tale_id" value="{{ tale_id }}">
+
+        <fieldset>
+            <legend>Expression System</legend>
+
+            <p>
+                <label for="organism">Target Organism:</label><br>
+                <select name="organism" id="organism">
+                    <option value="human">Human (Homo sapiens)</option>
+                    <option value="mouse">Mouse (Mus musculus)</option>
+                    <option value="zebrafish">Zebrafish (Danio rerio)</option>
+                    <option value="drosophila">Fruit Fly (Drosophila melanogaster)</option>
+                    <option value="celegans">C. elegans</option>
+                    <option value="yeast">Yeast (S. cerevisiae)</option>
+                    <option value="ecoli">E. coli</option>
+                    <option value="plant">Plant (A. thaliana)</option>
+                    <option value="other">Other</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="promoter">Promoter:</label><br>
+                <select name="promoter" id="promoter">
+                    <optgroup label="Mammalian">
+                        <option value="cmv">CMV (strong, constitutive)</option>
+                        <option value="ef1a">EF1a (moderate, constitutive)</option>
+                        <option value="cag">CAG (strong, constitutive)</option>
+                        <option value="pgk">PGK (moderate, constitutive)</option>
+                        <option value="ubi">Ubiquitin C (moderate)</option>
+                    </optgroup>
+                    <optgroup label="Inducible">
+                        <option value="tet_on">Tet-On (doxycycline inducible)</option>
+                        <option value="tet_off">Tet-Off (doxycycline repressible)</option>
+                    </optgroup>
+                    <optgroup label="Bacterial">
+                        <option value="t7">T7 (IPTG inducible)</option>
+                        <option value="lac">lac (IPTG inducible)</option>
+                        <option value="trc">trc (IPTG inducible)</option>
+                    </optgroup>
+                    <optgroup label="Plant">
+                        <option value="35s">CaMV 35S (constitutive)</option>
+                        <option value="ubi_plant">Ubiquitin (monocots)</option>
+                    </optgroup>
+                </select>
+            </p>
+
+            <p>
+                <label for="backbone">Plasmid Backbone:</label><br>
+                <select name="backbone" id="backbone">
+                    <optgroup label="TALEN Expression">
+                        <option value="pcmv_talen">pCMV-TALEN (mammalian)</option>
+                        <option value="ptal_effector">pTAL-Effector (mammalian)</option>
+                        <option value="pgoldentalen">pGoldenTALEN (Golden Gate compatible)</option>
+                    </optgroup>
+                    <optgroup label="Transcription Activators">
+                        <option value="ptal_vp64">pTAL-VP64 (transcription activator)</option>
+                        <option value="ptal_vpr">pTAL-VPR (strong activator)</option>
+                    </optgroup>
+                    <optgroup label="Transcription Repressors">
+                        <option value="ptal_krab">pTAL-KRAB (repressor)</option>
+                        <option value="ptal_sid">pTAL-SID (repressor)</option>
+                    </optgroup>
+                    <optgroup label="Custom">
+                        <option value="custom">Custom backbone (specify below)</option>
+                    </optgroup>
+                </select>
+            </p>
+
+            <div id="custom_backbone_input">
+                <p>
+                    <label for="custom_backbone_seq">Custom Backbone Sequence:</label><br>
+                    <textarea name="custom_backbone_seq" id="custom_backbone_seq" rows="4" cols="80"
+                              placeholder="Paste backbone sequence or provide file path..."></textarea>
+                </p>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Effector Domain</legend>
+
+            <p>
+                <label for="effector">Effector Type:</label><br>
+                <select name="effector" id="effector">
+                    <optgroup label="Nucleases (for gene knockout)">
+                        <option value="foki">FokI nuclease (for TALEN pairs)</option>
+                        <option value="foki_sharkey">FokI Sharkey (enhanced activity)</option>
+                        <option value="foki_ea">FokI ELD/KKR (obligate heterodimer)</option>
+                    </optgroup>
+                    <optgroup label="Activators (for gene activation)">
+                        <option value="vp64">VP64 (4x VP16)</option>
+                        <option value="vpr">VPR (VP64-p65-Rta)</option>
+                        <option value="p65">p65 activation domain</option>
+                    </optgroup>
+                    <optgroup label="Repressors (for gene silencing)">
+                        <option value="krab">KRAB domain</option>
+                        <option value="sid">SID domain</option>
+                        <option value="dnmt3a">DNMT3A (DNA methylation)</option>
+                    </optgroup>
+                    <optgroup label="Epigenetic Modifiers">
+                        <option value="p300">p300 (histone acetylation)</option>
+                        <option value="lsd1">LSD1 (histone demethylation)</option>
+                        <option value="tet1">TET1 (DNA demethylation)</option>
+                    </optgroup>
+                    <optgroup label="Reporters/Imaging">
+                        <option value="gfp">GFP</option>
+                        <option value="mcherry">mCherry</option>
+                        <option value="luciferase">Luciferase</option>
+                    </optgroup>
+                </select>
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Assembly Method</legend>
+
+            <p>
+                <label for="assembly">Cloning Method:</label><br>
+                <select name="assembly" id="assembly">
+                    <option value="golden_gate">Golden Gate Assembly</option>
+                    <option value="gibson">Gibson Assembly</option>
+                    <option value="restriction">Restriction/Ligation</option>
+                    <option value="ligation_free">Ligation-Free (FLASH)</option>
+                </select>
+            </p>
+
+            <p>
+                <input type="checkbox" name="codon_optimize" id="codon_optimize" checked>
+                <label for="codon_optimize">Codon optimize for target organism</label>
+            </p>
+
+            <p>
+                <input type="checkbox" name="add_nls" id="add_nls" checked>
+                <label for="add_nls">Add Nuclear Localization Signal (NLS)</label>
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Output Options</legend>
+
+            <p>
+                <input type="checkbox" name="output_genbank" id="output_genbank" checked>
+                <label for="output_genbank">GenBank file (.gb)</label>
+            </p>
+
+            <p>
+                <input type="checkbox" name="output_fasta" id="output_fasta" checked>
+                <label for="output_fasta">FASTA file</label>
+            </p>
+
+            <p>
+                <input type="checkbox" name="output_primers" id="output_primers" checked>
+                <label for="output_primers">Cloning primers</label>
+            </p>
+
+            <p>
+                <input type="checkbox" name="output_rvd_order" id="output_rvd_order" checked>
+                <label for="output_rvd_order">RVD repeat ordering information</label>
+            </p>
+        </fieldset>
+
+        <p>
+            <button type="submit">Generate Plasmid Design</button>
+        </p>
+    </form>
+
+    <hr>
+    <h3>Plasmid Template Locations</h3>
+    <p><small>
+        Template sequences should be placed in: <code>/data/plasmid_templates/</code><br>
+        See <a href="/help#plasmid-templates">documentation</a> for template format.
+    </small></p>
+
+    <hr>
+    <p><a href="/results/{{ session_id }}">Back to Results</a> | <a href="/">New Search</a></p>
+</body>
+</html>

@@ -9,9 +9,15 @@ CONSECUTIVE_AT_PATTERN = re.compile(r"[AT]{7,}")
 
 
 def generate_complementary_dna(sequence: str) -> str:
-    """Generate complementary DNA strand"""
+    """Generate complementary DNA strand (same direction)"""
     complement = {"A": "T", "T": "A", "C": "G", "G": "C"}
     return "".join(complement.get(base, base) for base in sequence)
+
+
+def reverse_complement(sequence: str) -> str:
+    """Generate reverse complement of DNA sequence (5' to 3' on opposite strand)"""
+    complement = {"A": "T", "T": "A", "C": "G", "G": "C"}
+    return "".join(complement.get(base, base) for base in reversed(sequence))
 
 
 def calculate_gc_content_array(sequence: str) -> List[int]:
