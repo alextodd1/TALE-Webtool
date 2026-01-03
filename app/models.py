@@ -24,6 +24,8 @@ def generate_search_hash(
     skip_cpg: bool,
     skip_consecutive_at: bool,
     min_gc: int,
+    search_position: int | None = None,
+    search_position_range: int | None = None,
 ) -> str:
     """
     Generate a hash of search parameters to detect duplicate searches.
@@ -44,7 +46,9 @@ def generate_search_hash(
         f"{g_code}|"
         f"{skip_cpg}|"
         f"{skip_consecutive_at}|"
-        f"{min_gc}"
+        f"{min_gc}|"
+        f"{search_position}|"
+        f"{search_position_range}"
     )
 
     # Generate hash

@@ -68,10 +68,10 @@
             <p>
                 <label for="orientation">Orientation:</label><br>
                 <select name="orientation" id="orientation">
+                    <option value="convergent" selected>Convergent Pairs (standard TALEN)</option>
                     <option value="any">Any Orientation</option>
                     <option value="forward">Forward Strand Only</option>
                     <option value="reverse">Reverse Strand Only</option>
-                    <option value="convergent">Convergent Pairs (standard TALEN)</option>
                     <option value="divergent">Divergent Pairs</option>
                 </select>
             </p>
@@ -83,7 +83,7 @@
             <p>
                 <label for="min_tale_length">Min TALE Length:</label>
                 <input type="number" name="min_tale_length" id="min_tale_length"
-                       value="15" min="10" max="30" size="5">
+                       value="20" min="10" max="30" size="5">
 
                 <label for="max_tale_length">Max TALE Length:</label>
                 <input type="number" name="max_tale_length" id="max_tale_length"
@@ -93,11 +93,11 @@
             <p>
                 <label for="min_spacer_length">Min Spacer Length:</label>
                 <input type="number" name="min_spacer_length" id="min_spacer_length"
-                       value="14" min="1" max="100" size="5">
+                       value="30" min="1" max="100" size="5">
 
                 <label for="max_spacer_length">Max Spacer Length:</label>
                 <input type="number" name="max_spacer_length" id="max_spacer_length"
-                       value="20" min="1" max="100" size="5">
+                       value="30" min="1" max="100" size="5">
             </p>
         </fieldset>
 
@@ -113,11 +113,11 @@
             </p>
 
             <p>
-                <label for="position">Target Position (optional):</label>
-                <input type="number" name="position" id="position" min="0" size="10">
+                <label for="search_position">Search Position (optional):</label>
+                <input type="number" name="search_position" id="search_position" min="0" size="10">
 
-                <label for="position_range">Range (+/-):</label>
-                <input type="number" name="position_range" id="position_range" min="0" size="10">
+                <label for="search_position_range">Range (+/-):</label>
+                <input type="number" name="search_position_range" id="search_position_range" min="0" size="10">
             </p>
 
             <p>

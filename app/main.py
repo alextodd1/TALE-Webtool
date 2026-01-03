@@ -109,14 +109,14 @@ async def perform_search(
     dna_file: Optional[UploadFile] = File(None),
     ncbi_accession: Optional[str] = Form(None),
     search_mode: str = Form("pairs"),
-    orientation: str = Form("any"),
-    min_tale_length: int = Form(15),
+    orientation: str = Form("convergent"),
+    min_tale_length: int = Form(20),
     max_tale_length: int = Form(20),
-    min_spacer_length: int = Form(14),
-    max_spacer_length: int = Form(20),
+    min_spacer_length: int = Form(30),
+    max_spacer_length: int = Form(30),
     g_code: str = Form("NH"),
-    position: Optional[int] = Form(None),
-    position_range: Optional[int] = Form(None),
+    search_position: Optional[int] = Form(None),
+    search_position_range: Optional[int] = Form(None),
     skip_cpg: str = Form("true"),
     skip_consecutive_at: str = Form("true"),
     min_gc: int = Form(25),
@@ -135,7 +135,8 @@ async def perform_search(
         f"tale_length={min_tale_length}-{max_tale_length}, "
         f"spacer_length={min_spacer_length}-{max_spacer_length}, "
         f"g_code={g_code}, skip_cpg={skip_cpg_bool}, "
-        f"skip_consecutive_at={skip_consecutive_at_bool}, min_gc={min_gc}"
+        f"skip_consecutive_at={skip_consecutive_at_bool}, min_gc={min_gc}, "
+        f"search_position={search_position}, search_position_range={search_position_range}"
     )
 
     sequence = None
@@ -181,6 +182,8 @@ async def perform_search(
             skip_cpg=skip_cpg_bool,
             skip_consecutive_at=skip_consecutive_at_bool,
             min_gc=min_gc,
+            search_position=search_position,
+            search_position_range=search_position_range,
         )
 
         # Check cache for existing results
@@ -234,8 +237,8 @@ async def perform_search(
                 skip_cpg=skip_cpg_bool,
                 skip_consecutive_at=skip_consecutive_at_bool,
                 min_gc=min_gc,
-                position=position,
-                position_range=position_range,
+                position=search_position,
+                position_range=search_position_range,
             )
 
             # Store results
@@ -265,8 +268,8 @@ async def perform_search(
                 skip_cpg=skip_cpg_bool,
                 skip_consecutive_at=skip_consecutive_at_bool,
                 min_gc=min_gc,
-                position=position,
-                position_range=position_range,
+                position=search_position,
+                position_range=search_position_range,
             )
 
             # Store results
