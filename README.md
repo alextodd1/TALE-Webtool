@@ -1,4 +1,4 @@
-# 🧬 TALE Pair Finder v0.2.0 (beta)
+# 🧬 TALE Pair Finder v0.3.0 (beta)
 
 ## Overview
 
@@ -9,8 +9,6 @@ TALEs were largely abandoned after 2012 despite their superior specificity and p
 This tool identifies optimal TALE binding site pairs in genomic sequences for various TALE-based applications. This tool aims to **in future** supports multiple TALE architectures including transcriptional activators, repressors, and future base editors. The algorithm searches for paired binding sites on opposite DNA strands with user-defined spacing, applying quality filters to maximise success probability.
 
 ### Algorithm
-
-The search algorithm employs several optimisations for efficient genome-scale analysis:
 
 1. **Pre-computation Phase:** Generates complementary strand, calculates cumulative GC arrays, and identifies CpG islands using 200bp sliding windows (≥50% GC, CpG observed/expected ≥0.6)
 
@@ -115,6 +113,7 @@ Developed by Alex Todd for bioinfo research and gene engineering.
 ![Version](https://img.shields.io/badge/version-2.0.0-blue)
 ![Python](https://img.shields.io/badge/python-3.10+-green)
 ![License](https://img.shields.io/badge/license-MIT-orange)
+
 
 
 
